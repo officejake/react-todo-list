@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addReminder, deleteReminder } from '../actions';
+import { addReminder, deleteReminder, clearReminders } from '../actions';
 class App extends Component {
     constructor(props) {
         super(props);
@@ -47,8 +47,14 @@ class App extends Component {
                     <div className="form-group">
                     <label>
                         <input
-                            className="form-control"
-                            onChange={event => this.setState({text: event.target.value})}
+                           className="form-control"
+                           placeholder='Eviscerate the Proletariat'
+                           onChange={event => this.setState({text: event.target.value})}
+                           onKeyPress={event => {
+                              if (event.key === 'Enter') {
+                                 this.addReminder()
+                              }
+                           }}
                         />
                         <div className="label-text"> I have to ... </div>
                     </label>
@@ -57,11 +63,20 @@ class App extends Component {
                         type="button"
                         className="btnSubmit"
                         onClick={() => this.addReminder()}
-                    >
+                     >
                     Add reminder
                     </button>
                 </div>
                 { this.renderReminders() }
+                <div>
+                  <button
+                     type="button" 
+                     className='clearBtn'
+                     onClick={() => this.props.clearReminders()}
+                  >
+                  Clear All
+                  </button>
+                </div>
             </div>
         )
     }
@@ -73,4 +88,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, { addReminder, deleteReminder })(App);
+export default connect(mapStateToProps, { addReminder, deleteReminder, clearReminders })(App);
