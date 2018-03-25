@@ -14,5 +14,5 @@ export const deleteReminder = (id) => {
         type: DELETE_REMINDER,
         id
     }
-    
+    return action;
 }
