@@ -5,6 +5,7 @@ $background: #333;
 $border: #4A4A4A;
 $phText: #9B9B9B;
 $inputText: #F0F0F0;
+$delete: #ff5555;
 
 body {
     background-color: $background;
@@ -41,7 +42,7 @@ label {
         font-family: $font-stack;
         font-size: 20px;
         letter-spacing: 2px;
-        width: 200px;
+        width: 350px;
         transition: all 0.3s;
         padding: 5px 20px;
         text-transform: uppercase;
@@ -49,7 +50,7 @@ label {
 
         &:focus {
             max-width: 100%;
-            width: 400px;
+            width: 500px;
 
             & + .label-text {
                 color: $inputText;
@@ -66,6 +67,7 @@ label {
 }
 
 button {
+    font-family: $font-stack;
     outline: 0;
     background-color: $background;
     border: 2px solid white;
@@ -80,17 +82,19 @@ button {
 }
 
 ul {
-    display: inline-flex;
+    display: flex;
     flex-direction: column;
-    text-align: center;
+    // text-align: center;
+    align-items: center;
     color: white;
-    font-size: 17px;
+    font-size: 25px;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
     list-style-type: none;
     padding: 0;
     padding-top: 15px;
     margin: 0;
+    cursor: text;
 }
 
 li {
@@ -100,5 +104,13 @@ li {
 
 .deleteBtn {
     padding-left: 10px;
+    color: $delete;
+    cursor: default;
+}
+
+.clearBtn {
+    border: none;
+    color: $delete;
+    margin-top: 30px;
 }
 
