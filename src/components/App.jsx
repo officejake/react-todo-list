@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addReminder } from '../actions';
-import '../index.css';
-
 class App extends Component {
     constructor(props) {
         super(props);
@@ -18,11 +16,11 @@ class App extends Component {
     renderReminders(){
         const { reminders } = this.props;
         return (
-            <ul>
+            <ul className='reminderList'>
                 {
                     reminders.map(reminder => {
                         return (
-                            <li key={reminder.id}>
+                            <li className='reminderItem' key={reminder.id}>
                                 <div>{reminder.text}</div>
                             </li>
                         )
@@ -35,24 +33,23 @@ class App extends Component {
     render() {
         return (
             <div className="App">
-                <div className="title">
-                    It's a To-Do List?
-                </div>
                 <div>
-                <div className="form-group">
-                    <input
-                        className="form-control"
-                        placeholder="I have to..."
-                        onChange={event => this.setState({text: event.target.value})}
-                    />
-                </div>
-                <button
-                    type="button"
-                    className="btnSubmit"
-                    onClick={() => this.addReminder()}
-                >
-                Add to List!
-                </button>
+                    <div className="form-group">
+                    <label>
+                        <input
+                            className="form-control"
+                            onChange={event => this.setState({text: event.target.value})}
+                        />
+                        <div className="label-text"> I have to ... </div>
+                    </label>
+                    </div>
+                    <button
+                        type="button"
+                        className="btnSubmit"
+                        onClick={() => this.addReminder()}
+                    >
+                    Add reminder
+                    </button>
                 </div>
                 { this.renderReminders() }
             </div>
