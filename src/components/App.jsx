@@ -49,7 +49,7 @@ class App extends Component {
       return (
          <div className="App">
             <div>
-               <form onSubmit={this.handleSubmit.bind(this)}>
+               <form onSubmit={this.handleSubmit}>
                   <label>
                      <input
                         value={this.state.value}
